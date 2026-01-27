@@ -1,1 +1,201 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de Administrador - Gas Express</title>
+    <link rel="stylesheet" href="/static/administrador.css">
 
+</head>
+<body>
+
+    <header>
+        <img src="/static/image/logo.png" alt="Logo" class="logo">
+
+        <h1>Panel de Administración</h1>
+    </header>
+
+    <main>
+        <!-- SECCIÓN DE PEDIDOS DEL DÍA -->
+        <section id="pedidos-del-dia">
+            <h2>Pedidos del Día</h2>
+            
+            <h3>Agregar Nuevo Pedido</h3>
+            <form>
+                <div>
+                    <label for="cliente-nombre">Nombre del Cliente</label>
+                    <input type="text" id="cliente-nombre" name="cliente-nombre" placeholder="Ej: Juan Pérez">
+                </div>
+                <div>
+                    <label for="cliente-dni">DNI del Cliente</label>
+                    <input type="text" id="cliente-dni" name="cliente-dni" placeholder="Ej: 12.345.678">
+                </div>
+                <div>
+                    <label for="cliente-telefono">Teléfono</label>
+                    <input type="tel" id="cliente-telefono" name="cliente-telefono" placeholder="Ej: 1122334455">
+                </div>
+                <div>
+                    <label for="cliente-direccion">Dirección del Cliente</label>
+                    <input type="text" id="cliente-direccion" name="cliente-direccion" placeholder="Ej: Av. Siempre Viva 742">
+                </div>
+                <div>
+                    <label for="tipo-garrafa">Tipo de Garrafa</label>
+                    <select id="tipo-garrafa" name="tipo-garrafa">
+                        <option value="10kg">Garrafa de 10 kg</option>
+                        <option value="15kg">Garrafa de 15 kg</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="label-block">Tipo de Entrega</label>
+                    <div class="radio-group">
+                        <input type="radio" id="entrega-domicilio" name="tipo-entrega" value="domicilio" checked>
+                        <label for="entrega-domicilio">Llevar a domicilio</label>
+                        <input type="radio" id="entrega-retiro" name="tipo-entrega" value="retiro">
+                        <label for="entrega-retiro">Cliente retira</label>
+                    </div>
+                </div>
+                <button type="submit">Agregar Pedido</button>
+            </form>
+
+            <h3 class="table-title">Listado de Pedidos</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Cliente</th>
+                        <th>Teléfono</th>
+                        <th>Garrafa</th>
+                        <th>Entrega</th>
+                        <th>Acción</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Ejemplo de un pedido -->
+                    <tr>
+                        <td data-label="Cliente">Ana Gómez</td>
+                        <td data-label="Teléfono">3415678901</td>
+                        <td data-label="Garrafa">10 kg</td>
+                        <td data-label="Entrega">Domicilio</td>
+                        <td data-label="Acción"><button class="action-btn complete-btn">Marcar como Completado</button></td>
+                    </tr>
+                    <tr>
+                        <td data-label="Cliente">Carlos Ruiz</td>
+                        <td data-label="Teléfono">3412345678</td>
+                        <td data-label="Garrafa">15 kg</td>
+                        <td data-label="Entrega">Retira</td>
+                        <td data-label="Acción"><button class="action-btn complete-btn">Marcar como Completado</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- SECCIÓN DE STOCK -->
+        <section id="stock-disponible">
+            <h2>Stock Disponible</h2>
+            <div class="stock-info">
+                <div class="stock-item">
+                    <h3>Garrafas de 10 kg</h3>
+                    <div class="stock-controls">
+                        <button class="stock-btn">-</button>
+                        <span class="stock-quantity">50</span>
+                        <button class="stock-btn">+</button>
+                    </div>
+                    <p>unidades</p>
+                </div>
+                <div class="stock-item">
+                    <h3>Garrafas de 15 kg</h3>
+                    <div class="stock-controls">
+                        <button class="stock-btn">-</button>
+                        <span class="stock-quantity">32</span>
+                        <button class="stock-btn">+</button>
+                    </div>
+                    <p>unidades</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN DE VENTAS -->
+        <section id="ventas">
+            <h2>Ventas de la Semana</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Fecha</th>
+                        <th>Cliente</th>
+                        <th>DNI</th>
+                        <th>Teléfono</th>
+                        <th>Dirección</th>
+                        <th>Garrafa</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Ejemplo de una venta registrada -->
+                    <tr>
+                        <td data-label="Fecha">11/12/2025</td>
+                        <td data-label="Cliente">Carlos Ruiz</td>
+                        <td data-label="DNI">22.333.444</td>
+                        <td data-label="Teléfono">3412345678</td>
+                        <td data-label="Dirección">Av. Pellegrini 1234</td>
+                        <td data-label="Garrafa">15 kg</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- SECCIÓN DE ENVASES PRESTADOS -->
+        <section id="envases-prestados">
+            <h2>Gestión de Envases Prestados</h2>
+
+            <h3>Agregar Préstamo de Envase</h3>
+            <form>
+                <div>
+                    <label for="prestamo-cliente-nombre">Nombre del Cliente</label>
+                    <input type="text" id="prestamo-cliente-nombre" name="prestamo-cliente-nombre" placeholder="Ej: Luis Fernández">
+                </div>
+                <div>
+                    <label for="prestamo-cliente-dni">DNI del Cliente</label>
+                    <input type="text" id="prestamo-cliente-dni" name="prestamo-cliente-dni" placeholder="Ej: 25.678.901">
+                </div>
+                <div>
+                    <label for="prestamo-cliente-telefono">Teléfono</label>
+                    <input type="tel" id="prestamo-cliente-telefono" name="prestamo-cliente-telefono" placeholder="Ej: 3419876543">
+                </div>
+                <div>
+                    <label for="prestamo-cliente-direccion">Dirección</label>
+                    <input type="text" id="prestamo-cliente-direccion" name="prestamo-cliente-direccion" placeholder="Ej: Bv. Oroño 500">
+                </div>
+                <button type="submit">Registrar Préstamo</button>
+            </form>
+
+            <h3 class="table-title">Envases Prestados esta Semana (Pendientes)</h3>
+            <table class="table-prestamos">
+                <thead>
+                    <tr>
+                        <th>Cliente</th>
+                        <th>DNI</th>
+                        <th>Teléfono</th>
+                        <th>Fecha Préstamo</th>
+                        <th>Acción</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td data-label="Cliente">Luis Fernández</td>
+                        <td data-label="DNI">25.678.901</td>
+                        <td data-label="Teléfono">3419876543</td>
+                        <td data-label="Fecha Préstamo">10/12/2025</td>
+                        <td data-label="Acción"><button class="action-btn return-btn">Marcar como Devuelto</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- SECCIÓN DE GANANCIAS -->
+        <section id="ganancias">
+            <h2>Ganancias</h2>
+            <p>Haz clic en el botón para descargar el reporte completo de ganancias en formato Excel.</p>
+            <button type="button">Descargar Reporte de Ganancias</button>
+        </section>
+    </main>
+
+</body>
+</html>
