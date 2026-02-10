@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Panel de Administrador - Gas Express</title>
-    <link rel="stylesheet" href="/static/css/administrador.css">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/administrador.css') }}">
+
 
 </head>
 <body>
@@ -16,15 +17,17 @@
     </header>
 
     <main>
-        <!-- SECCIÓN DE PEDIDOS DEL DÍA -->
-        <section id="pedidos-del-dia">
-            <h2>Pedidos del Día</h2>
-            
-            <h3>Agregar Nuevo Pedido</h3>
-            <form>
+        <!-- SECCIÓN DE CLIENTES -->
+        <section id="agregar-cliente">
+            <h3>Agregar Nuevo Cliente</h3>
+            <form method="POST" action="/agregar_cliente">
                 <div>
                     <label for="cliente-nombre">Nombre del Cliente</label>
-                    <input type="text" id="cliente-nombre" name="cliente-nombre" placeholder="Ej: Juan Pérez">
+                    <input type="text" id="cliente-nombre" name="cliente-nombre" placeholder="Ej: Juan">
+                </div>
+                <div>
+                    <label for="cliente-apellido">Apellido del Cliente</label>
+                    <input type="text" id="cliente-apellido" name="cliente-apellido" placeholder="Ej: Pérez">
                 </div>
                 <div>
                     <label for="cliente-dni">DNI del Cliente</label>
@@ -34,6 +37,24 @@
                     <label for="cliente-telefono">Teléfono</label>
                     <input type="tel" id="cliente-telefono" name="cliente-telefono" placeholder="Ej: 1122334455">
                 </div>
+                <div>
+                    <label for="cliente-direccion">Dirección del Cliente</label>
+                    <input type="text" id="cliente-direccion" name="cliente-direccion" placeholder="Ej: Av. Siempre Viva 742">
+                </div>
+                <button type="submit">Agregar Cliente</button>
+            </form>
+
+            <h3>Informacion de clientes</h3>
+            <button type="button" onclick="mostrarClientes()">Mostrar información</button>
+
+        </section>
+
+        <!-- SECCIÓN DE PEDIDOS DEL DÍA -->
+        <section id="pedidos-del-dia">
+            <h2>Pedidos del Día</h2>
+            
+            <h3>Agregar Nuevo Pedido</h3>
+            <form method="POST" action="/agregar_pedido">
                 <div>
                     <label for="cliente-direccion">Dirección del Cliente</label>
                     <input type="text" id="cliente-direccion" name="cliente-direccion" placeholder="Ej: Av. Siempre Viva 742">
@@ -197,6 +218,29 @@
             <button type="button">Descargar Reporte de Ganancias</button>
         </section>
     </main>
+    
+
+            <div id="modal-clientes" class="modal">
+                <div class="modal-contenido">
+                    <span class="cerrar" onclick="ocultarClientes()">&times;</span>
+                    <h3>Información de Clientes</h3>
+
+                    <table border="1" width="100%">
+                        <thead>
+                            <tr>
+                                <th>Nombre</th>
+                                <th>Apellido</th>
+                                <th>DNI</th>
+                                <th>Teléfono</th>
+                                <th>Dirección</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tabla-clientes"></tbody>
+                    </table>
+                </div>
+            </div>
 
 </body>
+
+<script src="{{ url_for('static', filename='js/clientes.js') }}"></script>
 </html>
