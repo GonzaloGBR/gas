@@ -112,6 +112,56 @@ th { background-color: #f2f2f2; }
     max-width: 100%;
     height: auto;
 }
+/* =========================
+   MODAL CLIENTES (GLOBAL)
+   ========================= */
+
+#modal-clientes {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+#modal-clientes .modal-contenido {
+    background-color: #fff;
+    margin: 5% auto;
+    padding: 20px;
+    width: 85%;
+    max-width: 900px;
+    border-radius: 8px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+}
+
+#modal-clientes .cerrar {
+    float: right;
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#modal-clientes .cerrar:hover {
+    color: red;
+}
+
+#modal-clientes table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+#modal-clientes th,
+#modal-clientes td {
+    padding: 10px;
+    border: 1px solid #ccc;
+    text-align: left;
+}
+
+#modal-clientes th {
+    background-color: #f5f5f5;
+}
+
 
 /* Media Query para ajustes finos en dispositivos pequeños */
 @media (max-width: 768px) {
@@ -156,4 +206,5 @@ th { background-color: #f2f2f2; }
         font-weight: bold;
         text-transform: uppercase;
     }
+
 }
